@@ -10,6 +10,8 @@ class ShipGallery extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     protected $table = 'ships_gallery';
 
     protected $fillable = [

@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class CabinCategory extends Model
 {
     use HasFactory;
+    public $timestamps = false;
 
     protected $table = 'cabin_categories';
 
