@@ -1,0 +1,36 @@
+version: "3.7"
+
+services:
+  nginx:
+    container_name: nginx
+    build: ./docker/nginx
+    restart: always
+    ports:
+      - "80:80"
+    links:
+      - fpm_php
+    volumes:
+      - ./docker/nginx/conf/hosts/:/etc/nginx/conf.d/
+      - ./laravel:/var/www
+
+  fpm_php:
+    container_name: fpm_php
+    build: ./docker/php
+    restart: always
+    volumes:
+      - ./laravel:/var/www
+
+  db:
+    image: mysql:8.4
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'db'
+      MYSQL_USER: 'user'
+      MYSQL_PASSWORD: 'password'
+      MYSQL_ROOT_PASSWORD: 'rootpassword'
+    ports:
+      - '3306:3306'
+    expose:
+      - '3306'
+    volumes:
+      - ./storage/mysql:/var/lib/mysql
