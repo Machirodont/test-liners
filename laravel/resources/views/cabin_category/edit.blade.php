@@ -9,7 +9,7 @@ use App\Enums\CabinCategoryTypeEnum;
 @section('content')
     <div class="container">
         <h1 class="text-2xl font-bold mb-4">Изменить тип каюты</h1>
-        <div>Корабль: <a href="{{ route('ships.show', ['ship' => $cabinCategory->ship->id]) }}">{{$cabinCategory->ship->title}}</a> </div>
+        <div>Лайнер: <a href="{{ route('ships.show', ['ship' => $cabinCategory->ship->id]) }}">{{$cabinCategory->ship->title}}</a> </div>
         <form action="{{ route('cabin_category.update', ['cabin_category_id' => $cabinCategory->id]) }}" method="POST" enctype="multipart/form-data" class="space-y-6">
             @csrf
             @method('PUT')

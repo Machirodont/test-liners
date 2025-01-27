@@ -4,7 +4,7 @@
 @section('content')
     <div class="container">
         <h1 class="text-2xl font-bold mb-4">Добавить тип каюты</h1>
-        <div>Корабль: <a href="{{ route('ships.show', ['ship' => $ship->id]) }}">{{$ship->title}}</a> </div>
+        <div>Лайнер: <a href="{{ route('ships.show', ['ship' => $ship->id]) }}">{{$ship->title}}</a> </div>
         <form action="{{ route('cabin_category.store') }}" method="POST" enctype="multipart/form-data" class="space-y-6">
             @csrf
             <input type="hidden" id="ship_id" name="ship_id" value="{{ old('ship_id', $ship->id ?? '') }}">

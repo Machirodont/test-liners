@@ -3,7 +3,7 @@
 @section('title', 'Create New Ship')
 
 @section('content')
-    <h1>Create New Ship</h1>
+    <h1>Создать новый лайнер</h1>
 
     <form action="{{ route('ships.store') }}" method="POST">
         @csrf

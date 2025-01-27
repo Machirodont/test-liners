@@ -3,7 +3,7 @@
 @section('title', 'Edit Ship: ' . $ship->title)
 
 @section('content')
-    <h1>Edit Ship: {{ $ship->title }}</h1>
+    <h1>Редактировать лайнер: {{ $ship->title }}</h1>
 
     <form action="{{ route('ships.update', $ship->id) }}" method="POST">
         @csrf

@@ -6,26 +6,30 @@
     <title>@yield('title', 'Laravel App')</title>
     @vite('resources/css/app.css')
 </head>
-<body>
+<body class="bg-gray-100 text-gray-900">
 
 <!-- Navbar or header -->
-<header>
+<header class="bg-indigo-600 text-white py-4 shadow-md">
     <nav>
-        <ul>
-            <li><a href="{{ route('ships.index') }}">Ships</a></li>
-            <li><a href="{{ route('ships.create') }}">Create Ship</a></li>
+        <ul class="flex space-x-6 justify-center">
+            <li>
+                <a href="{{ route('ships.index') }}" class="hover:text-indigo-300 transition-colors">Ships</a>
+            </li>
+            <li>
+                <a href="{{ route('ships.create') }}" class="hover:text-indigo-300 transition-colors">Create Ship</a>
+            </li>
         </ul>
     </nav>
 </header>
 
 <!-- Main content -->
-<main>
+<main class="container mx-auto px-4 py-8">
     @yield('content')
 </main>
 
 <!-- Footer -->
-<footer>
-    <p>&copy; {{ date('Y') }} PAC GROUP TEST TASK </p>
+<footer class="bg-gray-800 text-white text-center py-4 mt-8">
+    <p>&copy; {{ date('Y') }} PAC GROUP TEST TASK</p>
 </footer>
 
 </body>
