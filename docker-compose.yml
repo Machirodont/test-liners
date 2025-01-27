@@ -29,7 +29,7 @@ services:
       - ./laravel:/app
     stdin_open: true
     tty: true
-    command: ["sh", "-c", "npm install && tail -f /dev/null"]
+    command: ["sh", "-c", "npm install && npm run build"]
 
   db:
     image: mysql:8.4
