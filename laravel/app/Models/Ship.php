@@ -14,8 +14,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property int $ordering
  * @property bool $state
  *
- * @property CabinCategory[] $cabinCategories
- * @property ShipGallery[] $gallery
+ * @property-read CabinCategory[] $cabinCategories
+ * @property-read ShipGallery[] $gallery
  */
 class Ship extends Model
 {
@@ -44,6 +44,6 @@ class Ship extends Model
 
     public function gallery(): HasMany
     {
-        return $this->hasMany(ShipGallery::class, 'ship_id');
+        return $this->hasMany(ShipGallery::class, 'ship_id')->orderBy('ordering');
     }
 }

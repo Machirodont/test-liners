@@ -25,13 +25,13 @@ class ShipController extends Controller
     {
         $validated = $request->validate([
             'title' => 'required|string|max:255',
- //           'spec' => ['required', new SpecArrayValidator],
+            'spec' => ['required', new SpecArrayValidator],
             'description' => 'required|string',
             'ordering' => 'nullable|integer',
             'state' => 'nullable|boolean',
         ]);
 
-        $validated['spec'] = []; // array_values($validated['spec']);
+        $validated['spec'] = array_values($validated['spec']);
 
         Ship::create($validated);
 

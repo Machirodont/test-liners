@@ -11,7 +11,7 @@ class StoreShipGalleryRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,9 @@ class StoreShipGalleryRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'ship_id'  => 'required|exists:ships,id',
+            'title'    => 'required|string|max:255',
+            'ordering' => 'nullable|integer|min:0',
         ];
     }
 }

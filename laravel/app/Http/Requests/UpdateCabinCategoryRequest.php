@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests;
 
+use App\Enums\CabinCategoryTypeEnum;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateCabinCategoryRequest extends FormRequest
 {
@@ -11,7 +13,7 @@ class UpdateCabinCategoryRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +24,13 @@ class UpdateCabinCategoryRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'cabin_category_id' => 'required|integer|exists:cabin_categories,id',
+            'vendor_code' => 'required|string|max:10',
+            'title'       => 'required|string|max:255',
+            'type'        => ['nullable', Rule::enum(CabinCategoryTypeEnum::class)],
+            'description' => 'required|string',
+            'ordering'    => 'required|integer|min:0',
+            'state'       => 'boolean',
         ];
     }
 }
