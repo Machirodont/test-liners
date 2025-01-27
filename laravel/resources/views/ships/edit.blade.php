@@ -9,31 +9,10 @@
         @csrf
         @method('PUT')
 
-        <div>
-            <label for="title">Title</label>
-            <input type="text" id="title" name="title" value="{{ old('title', $ship->title) }}" required>
-            @error('title')
-            <div class="error">{{ $message }}</div>
-            @enderror
-        </div>
-
-        <div>
-            <label for="description">Description</label>
-            <textarea id="description" name="description" required>{{ old('description', $ship->description) }}</textarea>
-            @error('description')
-            <div class="error">{{ $message }}</div>
-            @enderror
-        </div>
-
-        <div>
-            <label for="ordering">Ordering</label>
-            <input type="number" id="ordering" name="ordering" value="{{ old('ordering', $ship->ordering) }}">
-        </div>
-
-        <div>
-            <label for="state">State</label>
-            <input type="checkbox" id="state" name="state" value="1" {{ old('state', $ship->state) ? 'checked' : '' }}>
-        </div>
+        @include('form.input_text', ['label'=>'Title', 'name'=>'title', 'model' => $ship])
+        @include('form.textarea', ['label'=>'Описание', 'name'=>'description', 'model' => $ship])
+        @include('form.input_number', ['label'=>'Порядок', 'name'=>'ordering', 'model' => $ship])
+        @include('form.select', ['label'=>'Активный', 'name'=>'state', 'model' => $ship, 'options'=> ['0'=>'Нет', '1'=>'Да']])
 
         <div>
             <table>
@@ -53,7 +32,7 @@
             <div class="error">{{ $message }}</div>
             @enderror
         </div>
-        <button type="submit">Update Ship</button>
+        @include('form.submit', ['title'=>'Update Ship'])
     </form>
 
     <a href="{{ route('ships.show', $ship->id) }}">Back to Ship</a>

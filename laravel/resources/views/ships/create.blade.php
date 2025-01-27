@@ -8,32 +8,11 @@
     <form action="{{ route('ships.store') }}" method="POST">
         @csrf
 
-        <div>
-            <label for="title">Title</label>
-            <input type="text" id="title" name="title" value="{{ old('title') }}" required>
-            @error('title')
-            <div class="error">{{ $message }}</div>
-            @enderror
-        </div>
+        @include('form.input_text', ['label'=>'Title', 'name'=>'title'])
+        @include('form.textarea', ['label'=>'Описание', 'name'=>'description'])
+        @include('form.input_number', ['label'=>'Порядок', 'name'=>'ordering'])
+        @include('form.select', ['label'=>'Активный', 'name'=>'state', 'options'=> ['0'=>'Нет', '1'=>'Да']])
 
-        <div>
-            <label for="description">Description</label>
-            <textarea id="description" name="description" required>{{ old('description') }}</textarea>
-            @error('description')
-            <div class="error">{{ $message }}</div>
-            @enderror
-        </div>
-
-        <div>
-            <label for="ordering">Ordering</label>
-            <input type="number" id="ordering" name="ordering" value="{{ old('ordering', 9999) }}">
-        </div>
-
-        <div>
-            <label for="state">State</label>
-            <input type="checkbox" id="state" name="state" value="1" {{ old('state') ? 'checked' : '' }}>
-        </div>
-
-        <button type="submit">Create Ship</button>
+        @include('form.submit', ['title'=>'Create Ship'])
     </form>
 @endsection
