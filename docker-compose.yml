@@ -20,6 +20,17 @@ services:
     volumes:
       - ./laravel:/var/www
 
+  node:
+    image: node:18
+    container_name: node
+    restart: always
+    working_dir: /app
+    volumes:
+      - ./laravel:/app
+    stdin_open: true
+    tty: true
+    command: ["sh", "-c", "npm install && tail -f /dev/null"]
+
   db:
     image: mysql:8.4
     restart: always

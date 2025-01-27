@@ -14,3 +14,6 @@ chmod:
 
 phpcli:
 	docker exec -it fpm_php bash
+
+nodecli:
+	docker exec -it node bash
